@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h1>Додати новий</h1>
+  <form action="" method=post>
+    <dl>
+      <dt>Заголовок:
+      <dd><input type=text name=title>
+      <dt>Опис:
+      <dd><textarea name=desc></textarea>
+    </dl>
+    <p><input type=submit value=Додати>
+  </form>
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{% block head %}
+<script type="text/javascript">
+  $(document).ready(function(){
+    showEntry();
+    getPhones();
+  });
+
+$('a.submit_comment').live('click', function(e){
+	  $.ajax({
+            url: '/submitcomment',
+            cache: false,
+            dataType: 'html',
+            data: {'comment': $('#comment').val(), 'entry': $('div.entry').attr('id')},
+            success: function(data){
+                $('#nocomments').hide();
+		$(data).insertBefore('div.newc');
+            }
+          });
+});
+$('a.respond').live('click', function(e){
+        var id = $(this).parents("div.comment").attr("id");
+	$.ajax({
+          url: '/commentform',
+          cache: false,
+          dataType: 'html',
+          data: {},
+          success: function(data){
+            $('div.comment#'+id+' a.respond').replaceWith(data);
+          }
+        });
+});
+
+$('a.respond_comment').live('click', function(e){
+          var id = $(this).parents("div.comment").attr("id");
+	  $.ajax({
+            url: '/respondcomment',
+            cache: false,
+            dataType: 'html',
+            data: {'comment': $('div.comment#'+id+' #response').val(), 'entry': $('div.entry').attr('id'), 'parent': id, 'layer': $('div.comment#'+id).attr("class")},
+            success: function(data){
+                $('div.comment#'+id+' .r').replaceWith('<a class="respond" href="javascript: void(0);">Відповісти</a>');
+		$(data).insertAfter('div.comment#'+id);
+            }
+          });
+});
+
+$('#dcomment').live('click', function(){
+	var id = $(this).parents("div.comment").attr("id");
+	$.ajax({
+            url: '/deletecomment',
+            cache: false,
+            dataType: 'html',
+            data: {'comment': $('div.comment#'+id).attr('id')},
+            success: function(data){
+		$('div.comment#'+id).replaceWith(data);
+	    }
+	});
+});
+</script>
+{% endblock %}
+{% block body %}
+<div class="entry" id={{context.id}}>
+</div>
+<div class="phones"></div><br><br>
+Номер:
+<input type=text name=number>
+Опис:
+<input type=text name=desc>
+<a class="addphone" href="javascript: void(0);">Додати</a><br><br>
+<p>Залишити коментар</p>
+<textarea id="comment" name=text></textarea><br>
+<a class="submit_comment" href="javascript: void(0);" id="{{context.id}}">послати</a><br>
+{% for comment in comments %}
+{{comment|safe}}    
+{% else %}
+  <p id="nocomments">Немає коментарів</p>
+{% endfor %}
+<div class="newc"></div>
+
+{% endblock %}

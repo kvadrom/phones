@@ -1,0 +1,7 @@
+{% for phone in context.phones %}
+  <p><img src="/static/favicon.png"/>&nbsp;{{phone.number}} - {{phone.desc}}
+  <a class="delete" href="javascript: void(0);" id="{{phone.id}}">x</a><br>
+</p>
+{% else %}
+  <p>Немає телефонів</p>
+{% endfor %}

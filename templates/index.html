@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% for entry in entries %}
+    <a href="/entry/{{ entry.id }}"><h2>{{ entry.title }}</h2></a>
+      {% for phone in entry.phones %}
+        <h3>{{phone.number}} - {{phone.desc}}</h3>
+      {% else %}
+        -
+      {% endfor %}
+  {% else %}
+    <em>Пусто</em>
+  {% endfor %}
+<br><a href="/add">[Додати новий]</a>
+{% endblock %}

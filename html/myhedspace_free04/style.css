@@ -1,0 +1,68 @@
+/* Myhedspace_Free04 */
+body {
+margin:0;
+padding:0;
+font-family: "Trebuchet MS", verdana, "Bitstream Vera Sans", sans-serif;
+font-size:12px;
+font-weight:bolder;
+color:#cccccc;
+text-align:center;
+}
+a {
+text-decoration:none;
+color:#CCCCCC;
+}
+a:hover {
+color:#999999;
+}
+#header {
+height:108px;
+background-color:#CCCCCC;
+background-image:url(images/header_bg.jpg);
+background-position:center;
+background-repeat:no-repeat;
+}
+#header h1 {
+margin:0;
+color:#FFFFFF;
+font-family: "Trebuchet MS", verdana, "Bitstream Vera Sans", sans-serif;
+font-size:32px;
+padding-top:40px;
+}
+.tagline {
+font-size:16px;
+color:#FFFFFF;
+font-weight:bolder;
+
+}
+#content {
+background-image:url(images/content_bg.jpg);
+background-position: top center;
+background-repeat:no-repeat;
+width:780px;
+margin:0 auto;
+display:table;
+}
+#content h2 {
+font-size:18px;
+background-image:url(images/title_bg.gif);
+background-repeat: no-repeat;
+background-position:bottom center;
+margin: 0 auto;
+padding:20px 0 25px 0;
+width:326px;
+}
+#content p {
+margin:0 auto;
+width:515px;
+padding-top:15px;
+}
+#footer {
+width:631px;
+height:27px;
+background-image:url(images/footer_img.gif);
+background-repeat: no-repeat;
+margin:20px auto;
+padding-top:30px;
+
+}
